@@ -51,14 +51,14 @@ export function New() {
     if (!title) {
       return alert('Digite o título da nota.')
     }
-    if (newTag) {
-      return alert(
-        'A tag escrita não foi adicionada. Clique no "+" para adicionar, ou deixe o campo vazio.'
-      )
-    }
     if (newLink) {
       return alert(
         'O link escrito não foi adicionado. Clique no "+" para adicionar, ou deixe o campo vazio.'
+      )
+    }
+    if (newTag) {
+      return alert(
+        'A tag escrita não foi adicionada. Clique no "+" para adicionar, ou deixe o campo vazio.'
       )
     }
     await api.post('/notes', {
