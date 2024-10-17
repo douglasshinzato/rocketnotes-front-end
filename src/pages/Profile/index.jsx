@@ -1,22 +1,22 @@
-import { useState } from "react"
-import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from "react-icons/fi"
-import { Link } from "react-router-dom"
-import { Input } from "../../components/Input"
-import { Button } from "../../components/Button"
-import { useAuth } from "../../hooks/auth"
+import { useState } from 'react'
+import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
+import { useNavigate } from 'react-router-dom'
+import { Input } from '../../components/Input'
+import { Button } from '../../components/Button'
+import { useAuth } from '../../hooks/auth'
 
-import { api } from "../../services/api"
-import avatarPlaceholder from "../../assets/avatar_placeholder.svg"
+import { api } from '../../services/api'
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
-import { Container, Form, Avatar } from "./style"
+import { Container, Form, Avatar } from './style'
 
 export function Profile() {
   const { user, updateProfile } = useAuth()
 
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
-  const [oldPassword, setOldPassword] = useState("")
-  const [newPassword, setNewPassword] = useState("")
+  const [oldPassword, setOldPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
 
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
@@ -24,6 +24,12 @@ export function Profile() {
 
   const [avatar, setAvatar] = useState(avatarUrl)
   const [avatarFile, setAvatarFile] = useState(null)
+
+  const navigate = useNavigate()
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   async function handleUpdate() {
     const user = {
@@ -46,9 +52,9 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <Link to="/">
+        <button type="button" onClick={handleBack}>
           <FiArrowLeft />
-        </Link>
+        </button>
       </header>
       <Form>
         <Avatar>

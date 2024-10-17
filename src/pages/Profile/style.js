@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -14,6 +14,11 @@ export const Container = styled.div`
     svg {
       color: ${({ theme }) => theme.COLORS.GRAY_100};
       font-size: 24px;
+    }
+
+    button {
+      background: none;
+      border: none;
     }
   }
 `
